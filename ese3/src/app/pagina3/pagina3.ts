@@ -1,23 +1,20 @@
 import { Component } from '@angular/core';
 import { Studenti } from '../studenti/studenti';
 import { CommonModule } from '@angular/common';
+import { RouterLink } from '@angular/router';
+import { StudentiService } from '../services/studenti-service';
 
 
 @Component({
   selector: 'app-pagina3',
-  imports: [Studenti,CommonModule],
+  imports: [Studenti,CommonModule,RouterLink],
   templateUrl: './pagina3.html',
   styleUrl: './pagina3.css',
 })
 export class Pagina3 {
-   studenti = [
-    { id: 1, nome: 'Mario', classe: '5D', mediaVoti: 4.1, mostraMedia: false },
-    { id: 2, nome: 'Luca', classe: '5D', mediaVoti: 7.3, mostraMedia: false },
-    { id: 3, nome: 'Luigi', classe: '5D', mediaVoti: 3.9, mostraMedia: false },
-    { id: 4, nome: 'Paolo', classe: '5D', mediaVoti: 7.0, mostraMedia: false },
-    { id: 5, nome: 'Andrea', classe: '5D', mediaVoti: 5.7, mostraMedia: false },
-  ];
-   toggleMedia(studente: any) {
-    studente.mostraMedia = !studente.mostraMedia;
+ studenti: any[] = [];
+  constructor(private studentiService: StudentiService) {}
+  ngOnInit() {
+    this.studenti = this.studentiService.getStudenti();
   }
 }

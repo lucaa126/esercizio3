@@ -1,3 +1,4 @@
+
 <div class="container mt-4">
   <h3 class="mb-3">Elenco studenti</h3>
   <ul class="list-group">
@@ -5,14 +6,16 @@
       <div class="ms-2 me-auto">
         <div class="fw-bold">{{ studente.nome }}</div>
         <small class="text-muted">{{ studente.classe }}</small>
+
         <div *ngIf="studente.mostraMedia" class="mt-2">
           <span class="badge bg-secondary">Media: {{ studente.mediaVoti }}</span>
         </div>
       </div>
 
-      <button class="btn btn-sm btn-primary" (click)="toggleMedia(studente)">
-        {{ studente.mostraMedia ? 'Nascondi' : 'Mostra' }}
-      </button>
-    </li>
-  </ul>
-</div>
+
+
+        <a class="btn btn-sm btn-outline-secondary" [routerLink]="['/pagina3', studente.id]">
+          Dettagli
+        </a>
+ 
+
